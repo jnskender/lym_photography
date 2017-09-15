@@ -5,7 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
+# Use devise for authentication and Authorization
+gem 'devise'
+# Use bootstrap for responsive layout and theming
+gem 'bootstrap', '~> 4.0.0.beta'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.3'
 # Use sqlite3 as the database for Active Record
