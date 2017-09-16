@@ -1,0 +1,54 @@
+<div class="container">
+  <nav class="navbar navbar-expand-sm navbar-light bg-white">
+    <%= link_to "Lym Photography", root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="nav nav-fill justify-content-center">
+        <li class="nav-item">
+          <%= link_to "Blog", "#", class:"nav-link" %>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="Preview" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Collections
+          </a>
+          <div class="dropdown-menu" aria-labelledby="Preview">
+            <a class="dropdown-item" href="#">Children</a>
+            <a class="dropdown-item" href="#">Potraits</a>
+            <a class="dropdown-item" href="#">Weddings</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Contact", "#", class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Pricing", "#", class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "FAQ", "#", class:"nav-link" %>
+        </li>
+
+        <% if user_signed_in? %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="Preview" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <%= current_user.email %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="Preview">
+            <%= link_to "Settings", "#", class:"dropdown-item" %>
+            <%= link_to "Sign Out", logout_path, class:"dropdown-item" %>
+          </div>
+        </li>
+        <% elsif !user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "Log In", login_path, class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Sign Up", signup_path, class:"nav-link" %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+</div>
