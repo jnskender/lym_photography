@@ -1,4 +1,5 @@
-class PhotoUploader < CarrierWave::Uploader::Base
+class ImageUploader < CarrierWave::Uploader::Base
+
   include CarrierWave::MiniMagick
   include Sprockets::Rails::Helper
 
@@ -11,4 +12,5 @@ class PhotoUploader < CarrierWave::Uploader::Base
   def extension_whitelist
     %w[jpg jpeg gif png]
   end
+
 end
