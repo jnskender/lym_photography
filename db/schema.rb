@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170918193619) do
+ActiveRecord::Schema.define(version: 20170918194637) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 20170918193619) do
     t.string   "cover_photo"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "photo_id"
+    t.index ["photo_id"], name: "index_albums_on_photo_id"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -42,6 +44,8 @@ ActiveRecord::Schema.define(version: 20170918193619) do
     t.string   "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "album_id"
+    t.index ["album_id"], name: "index_photos_on_album_id"
   end
 
   create_table "users", force: :cascade do |t|

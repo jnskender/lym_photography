@@ -1,19 +1,9 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @album.title %></h1>
 
-<p>
-  <strong>Title:</strong>
-  <%= @album.title %>
-</p>
+<p><%= link_to 'Upload new photo', new_album_photo_path(@album) %></p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @album.location %>
-</p>
-
-<p>
-  <strong>Cover photo:</strong>
-  <%= @album.cover_photo %>
-</p>
-
-<%= link_to 'Edit', edit_album_path(@album) %> |
-<%= link_to 'Back', albums_path %>
+<% @album.photos.each do |photo| %>
+  <%= link_to [@album, photo] do %>
+    <%= image_tag photo.file.url(:thumb) %>
+  <% end %>
+<% end %>
