@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
-  before_filter :set_album
+  #before_filter :set_album
 
   # GET /photos
   # GET /photos.json
@@ -69,8 +69,7 @@ class PhotosController < ApplicationController
     end
 
     def set_album
-      @album = Album.find params[:album_id] unless Album.find params[:album_id] == nil
-
+      @album = Album.find params[:album_id]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

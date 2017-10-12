@@ -7,5 +7,11 @@ class CreateAlbums < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+
+      create_table :table_photos do |t|
+        t.string :title
+        t.string :image
+      end
+
   end
 end
