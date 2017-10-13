@@ -1,7 +1,6 @@
 <div class="row">
 
-<div class="col"></div>
-<div class="col-sm-8 col-md-4">
+<div class="col-sm-8 col-md-4 mx-auto">
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -9,10 +8,10 @@
   <%= @photo.title %>
 </p>
 
-  <%= image_tag @photo.image.url , size:'260x180' %>
+  <%= image_tag @photo.image.url(:thumb) %>
 
 </div>
-<div class="col"></div>
-<%= link_to 'Edit', edit_album_photo_path(@photo) %> |
+
+<%= link_to 'Edit', edit_album_photo_path %> |
 <%= link_to 'Back', album_photos_path %>
 </div>
