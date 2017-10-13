@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
-  #before_filter :set_album
+  before_filter :set_album
 
   # GET /photos
   # GET /photos.json
@@ -14,9 +14,9 @@ class PhotosController < ApplicationController
      @photo = @album.photos.find params[:id]
   end
 
-  # GET /photos/new
+  # GET album/:id/photos/new
   def new
-    @photo = @album.photo.new
+    @photo = @album.photos.new
   end
 
   # GET /photos/1/edit
@@ -27,11 +27,11 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    @photo = @album.photo.new(photo_params)
+    @photo = @album.photos.new(photo_params)
     @photo.album = @album
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
+        format.html { redirect_to @album, notice: 'Photo was successfully created.' }
         format.json { render :show, status: :created, location: @photo }
       else
         format.html { render :new }

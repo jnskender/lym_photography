@@ -4,6 +4,6 @@
 
 <% @album.photos.each do |photo| %>
   <%= link_to [@album, photo] do %>
-    <%= image_tag photo.file.url(:thumb) %>
+    <%= image_tag photo.image.url %>
   <% end %>
 <% end %>

@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :users
 
-  root to: 'photos#index'
+  root to: 'albums#index'
 
-  resources :albums 
+  resources :albums do
     resources :photos
-
+  end
 
   devise_scope :user do
     get 'login', to: 'devise/sessions#new'
