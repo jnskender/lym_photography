@@ -5,7 +5,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   storage :fog
 
   def store_dir
-    "#{model.album.title}/#{model.title}"
+    "/#{model.album.title}/#{model.title}"
   end
 
   def extension_whitelist
