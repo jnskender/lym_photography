@@ -1,14 +1,16 @@
-<div class="col-md-6 mx-auto">
+<div class=" col-sm-12 col-md-6 mx-auto">
 
-<h1 class="mx-auto"><%= @album.title %></h1>
+<h1 class="text-center"><%= @album.title %></h1>
 
-<p><%= link_to 'Upload new photo', new_album_photo_path(@album) if user_signed_in? %></p>
-<%= link_to 'Download', album_download_url(@album) %>
+<p><%= link_to 'Upload new photo', new_album_photo_path(@album),
+ class: "text-center d-block" if !current_user.nil? && current_user.admin? %></p>
+<%= link_to 'Download Album', album_download_url(@album), class: "text-center d-block" %>
 
 <% @album.photos.each do |photo| %>
-  <%= link_to [@album, photo] do %>
-    <%= image_tag photo.image.url(:thumb) unless photo.image.url == nil %>
-  <% end %>
+
+    <%= link_to image_tag(photo.image.url(:display)), photo, class: "mx-auto d-block" unless photo.image.url == nil %>
+    <br>
+
 <% end %>
 
 

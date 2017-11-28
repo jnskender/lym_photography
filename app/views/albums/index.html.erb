@@ -1,32 +1,20 @@
-<p id="notice"><%= notice %></p>
+<div class="col-sm-12 col-md-6 mx-auto">
 
-<h1>Albums</h1>
+<h1 class="text-center">Albums</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Location</th>
-      <th>Cover photo</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% Array(@albums).each do |album| %>
-      <tr>
-        <td><%= album.title %></td>
-        <td><%= album.location %></td>
-        <%= image_tag album.photos.find(album.cover_photo).image.url(:thumb) unless album.cover_photo == nil %>
 
-        <td><%= link_to 'Show', album %></td>
-        <td><%= link_to 'Edit', edit_album_path(album) %></td>
-        <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <%= link_to album.title, album, class: "text-center d-block"  %><br>
+        <%= link_to image_tag(album.photos.find(album.cover_photo).image.url(:thumb)), album,
+         class: "text-center d-block" %>
+        <br>
+        <% if !current_user.nil? && current_user.admin?%>
+        <%= link_to 'Edit', edit_album_path(album), class: "text-center d-block" %>
+        <%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' },
+         class: "text-center d-block" %>
+        <% end %>
+        <br>
     <% end %>
-  </tbody>
-</table>
 
 <br>
-
-<%= link_to 'New Album', new_album_path %>
+</div>
