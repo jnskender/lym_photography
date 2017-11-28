@@ -1,10 +1,15 @@
+<div class="col-md-6 mx-auto">
 
-<h1><%= @album.title %></h1>
+<h1 class="mx-auto"><%= @album.title %></h1>
 
-<p><%= link_to 'Upload new photo', new_album_photo_path(@album) %></p>
+<p><%= link_to 'Upload new photo', new_album_photo_path(@album) if user_signed_in? %></p>
+<%= link_to 'Download', album_download_url(@album) %>
 
 <% @album.photos.each do |photo| %>
   <%= link_to [@album, photo] do %>
-    <%= image_tag photo.image.url , size:'260x180' %>
+    <%= image_tag photo.image.url(:thumb) unless photo.image.url == nil %>
   <% end %>
 <% end %>
+
+
+</div>

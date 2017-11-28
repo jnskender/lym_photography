@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :albums do
     resources :photos
+    get 'download', to: 'albums#download'
   end
 
   devise_scope :user do

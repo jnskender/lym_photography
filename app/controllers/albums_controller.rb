@@ -1,5 +1,9 @@
 class AlbumsController < ApplicationController
-  before_action :set_album, only: [:show, :edit, :update, :destroy]
+  before_action :set_album, only: %i[show edit update destroy]
+  # enable streaming responses
+  include ActionController::Streaming
+  # enable zipline
+  include Zipline
 
   # GET /albums
   # GET /albums.json
@@ -10,6 +14,15 @@ class AlbumsController < ApplicationController
   # GET /albums/1
   # GET /albums/1.json
   def show
+    #
+  end
+
+  def download
+     @photos = Album.find(params[:album_id]).photos.all
+     @album = Album.find(params[:album_id])
+    files = @photos.map{ |photo| [photo.image, "#{photo.title}.png"]}
+    zipline(files, "#{@album.title}.zip")
+
   end
 
   # GET /albums/new
@@ -19,6 +32,7 @@ class AlbumsController < ApplicationController
 
   # GET /albums/1/edit
   def edit
+    #
   end
 
   # POST /albums
@@ -62,14 +76,14 @@ class AlbumsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_album
-      @album = Album.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def album_params
-      params.require(:album).permit(:title, :location, :cover_photo)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_album
+    @album = Album.find(params[:id])
+  end
 
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def album_params
+    params.require(:album).permit(:title, :location, :cover_photo)
+  end
 end
