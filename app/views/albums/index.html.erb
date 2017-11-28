@@ -17,7 +17,8 @@
       <tr>
         <td><%= album.title %></td>
         <td><%= album.location %></td>
-        <td><%= album.cover_photo %></td>
+        <%= image_tag album.photos.find(album.cover_photo).image.url(:thumb) unless album.cover_photo == nil %>
+
         <td><%= link_to 'Show', album %></td>
         <td><%= link_to 'Edit', edit_album_path(album) %></td>
         <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
