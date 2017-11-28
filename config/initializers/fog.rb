@@ -10,7 +10,6 @@ CarrierWave.configure do |c|
       :region                 => "us-east-2"
     }
     c.fog_directory = ENV['AWS_BUCKET']
-    c.fog_public    = false
   elsif Rails.env.development?
     c.fog_credentials = {
       :provider               => "AWS",
