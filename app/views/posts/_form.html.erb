@@ -1,0 +1,19 @@
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+
+  <div class="field">
+    <%= f.label :album_id %>
+    <%= collection_select(:post, :album_id, Album.all, :id, :title) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
