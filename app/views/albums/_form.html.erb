@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= f.label :cover_photo %>
-    <%= f.text_field :cover_photo %>
+    <%= collection_select :album, :cover_photo, @album.photos.all, :image, :title %>
   </div>
 
   <div class="field">
