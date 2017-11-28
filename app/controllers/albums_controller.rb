@@ -26,7 +26,6 @@ class AlbumsController < ApplicationController
      @album = Album.find(params[:album_id])
     files = @photos.map{ |photo| [photo.image, "#{photo.title}.png"]}
     zipline(files, "#{@album.title}.zip")
-
   end
 
   # GET /albums/new
