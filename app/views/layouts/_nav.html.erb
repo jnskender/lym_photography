@@ -15,9 +15,10 @@
             Collections
           </a>
           <div class="dropdown-menu" aria-labelledby="Preview">
-            <a class="dropdown-item" href="#">Children</a>
-            <a class="dropdown-item" href="#">Potraits</a>
-            <a class="dropdown-item" href="#">Weddings</a>
+            <%= link_to "Children", albums_path(:category => "children"), class: "dropdown-item" %>
+            <%= link_to "Weddings", albums_path(:category => "weddings"), class: "dropdown-item" %>
+            <%= link_to "Portraits", albums_path(:category => "portraits"), class: "dropdown-item" %>
+
           </div>
         </li>
         <li class="nav-item">

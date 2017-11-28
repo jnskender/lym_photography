@@ -13,7 +13,7 @@
   </thead>
 
   <tbody>
-    <% @albums.each do |album| %>
+    <% Array(@albums).each do |album| %>
       <tr>
         <td><%= album.title %></td>
         <td><%= album.location %></td>

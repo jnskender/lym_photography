@@ -26,6 +26,12 @@
     <%= f.text_field :cover_photo %>
   </div>
 
+  <div class="field">
+    <%= f.label :category %>
+    <%= f.select :category, [["Children", "children"],
+    ["Weddings","weddings"],["Portraits", "portraits"]] %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

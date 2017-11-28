@@ -13,8 +13,8 @@ CarrierWave.configure do |c|
   elsif Rails.env.development?
     c.fog_credentials = {
       :provider               => "AWS",
-      :aws_access_key_id      => "AKIAIMEFYF6RDVLNQVRA",
-      :aws_secret_access_key  => "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",
+      :aws_access_key_id      => "AKIAJF6AQBGJ5SZYTT3Q",
+      :aws_secret_access_key  => "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",
       :region                 => "us-east-2"
     }
     c.fog_directory = "lym-photography-development"

@@ -8,13 +8,17 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.all
+    if @albums = Album.find_by_category(params[:category].downcase)
+      
+    else
+      @albums = Album.all
+    end
   end
 
   # GET /albums/1
   # GET /albums/1.json
   def show
-    #
+
   end
 
   def download
@@ -84,6 +88,6 @@ class AlbumsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def album_params
-    params.require(:album).permit(:title, :location, :cover_photo)
+    params.require(:album).permit(:title, :location, :cover_photo, :category)
   end
 end
