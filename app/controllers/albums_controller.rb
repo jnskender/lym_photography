@@ -8,8 +8,8 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
-    if @albums = Album.find_by_category(params[:category])
-
+    if !params[:category].nil?
+      @albums = Album.where(category: params[:category])
     else
       @albums = Album.all
     end

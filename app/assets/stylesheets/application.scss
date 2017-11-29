@@ -13,3 +13,21 @@
  * It is generally better to create a new file per style scope.
  *
  */
+body{
+   font-family: "lato", sans-serif;
+}
+ img{
+
+ }
+
+ .shadow{
+   -webkit-box-shadow: 4px 6px 22px 4px rgba(0,0,0,0.15);
+   -moz-box-shadow: 4px 6px 22px 4px rgba(0,0,0,0.15);
+   box-shadow: 4px 6px 22px 4px rgba(0,0,0,0.15);
+ }
+
+ .shadow:hover {
+   -webkit-box-shadow: 4px 6px 22px 4px rgba(0,0,0,0.30);
+   -moz-box-shadow: 4px 6px 22px 4px rgba(0,0,0,0.30);
+   box-shadow: 4px 6px 22px 4px rgba(0,0,0,0.30);
+ }
