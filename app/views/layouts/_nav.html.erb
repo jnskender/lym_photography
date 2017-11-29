@@ -1,12 +1,12 @@
-<div class="container">
-  <nav class="navbar navbar-expand-sm navbar-light bg-white">
-    <%= link_to "Lym Photography", root_path, class: "navbar-brand" %>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <%= link_to "Lym Photography", root_path, class: "navbar-brand cursive", id:"brand" %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="nav nav-fill justify-content-center">
+    <div class="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <%= link_to "Blog", posts_path, class:"nav-link" %>
         </li>
@@ -18,11 +18,10 @@
             <%= link_to "Children", albums_path(:category => "children"), class: "dropdown-item" %>
             <%= link_to "Weddings", albums_path(:category => "weddings"), class: "dropdown-item" %>
             <%= link_to "Portraits", albums_path(:category => "portraits"), class: "dropdown-item" %>
-
           </div>
         </li>
         <li class="nav-item">
-          <%= link_to "Contact", "#", class:"nav-link" %>
+          <%= link_to "Contact", contacts_path, class:"nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "Pricing", "#", class:"nav-link" %>
@@ -32,24 +31,23 @@
         </li>
 
         <% if user_signed_in? %>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="Preview" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-            <%= current_user.email %>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="Preview">
-            <%= link_to "Settings", "", class:"dropdown-item" %>
-            <%= link_to "Sign Out", logout_path, class:"dropdown-item" %>
-          </div>
-        </li>
-        <% elsif !user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to "Log In", login_path, class:"nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Sign Up", signup_path, class:"nav-link" %>
-        </li>
-        <% end %>
-      </ul>
-    </div>
-  </nav>
-</div>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="Preview" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              <%= current_user.email %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="Preview">
+              <%= link_to "Settings", "", class:"dropdown-item" %>
+              <%= link_to "Sign Out", logout_path, class:"dropdown-item" %>
+            </div>
+          </li>
+          <% elsif !user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "Log In", login_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Sign Up", signup_path, class:"nav-link" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>

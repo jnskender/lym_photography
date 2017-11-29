@@ -12,10 +12,12 @@ Rails.application.routes.draw do
 
   resources :posts
 
-
   devise_scope :user do
     get 'login', to: 'devise/sessions#new'
     get 'logout', to: 'devise/sessions#destroy'
     get 'signup', to: 'devise/registrations#new'
   end
+
+  resources 'contacts', only: %i[new create], path_names: { new: '' }
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end
