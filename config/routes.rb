@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'faq', to: 'static_pages#faq'
+
+  get 'static_pages/pricing'
+
+  get 'settings', to: 'static_pages#settings'
+
   resources :posts
   devise_for :admins
   devise_for :users

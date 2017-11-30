@@ -1,31 +1,33 @@
-<p id="notice"><%= notice %></p>
+<h1 class="text-center">Blog</h1>
 
-<h1>Posts</h1>
+<div class="col-sm-12 col-md-8 mx-auto">
+  <% Array(@posts).each do |post| %>
+    <% album = Album.find(post.album_id) %>
+      <div class="card shadow">
+        <div class="card-header">
+          <p class="card-text text-left d-inline cursive"><%= post.title %></p>
+          <p class="card-text text-left d-inline cursive ml-2"><%= post.created_at.strftime('%m/%d/%Y') %></p>
+          <% if !current_user.nil? && current_user.admin?%>
+            <div class="dropdown text-right float-right">
+              <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-wrench" aria-hidden="true"></i>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <td><%= link_to 'Edit', edit_post_path(post) %></td>
+                <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <%= link_to album do %>
+        <%= image_tag album.photos.find(album.cover_photo).image.url(:display), class:"text-center d-block img-fluid rounded card-img-top" unless album.cover_photo.nil? %>
+      <% end %>
+      <div class="card-body">
+        <p class="card-text d-inline text-justify"><%= post.content %></p>
+      </div>
+    </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Album</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <br>
+  <% end %>
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.content %></td>
-        <td><%= post.album_id %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+</div>
