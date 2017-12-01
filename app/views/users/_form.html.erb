@@ -1,0 +1,32 @@
+<div class="col-sm-12 col-md-8 mx-auto"><%= form_for @user do |f| %>
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.text_field :email, class:"form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-check form-check-inline">
+      <div class="field">
+        <%= f.label :admin, "Administrative Access?", class:"form-check-label" %>
+        <%= f.check_box :admin?, class:"form-check-input ml-3" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :album_id, "Allow album download for" %>
+      <%= collection_select(:user, :album_id, Album.all, :id, :title,{include_blank: 'Select an album'},{:class => "form-control"}) %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="actions">
+      <%= f.submit class: "btn btn-submit btn-primary" %>
+    </div>
+  </div>
+
+<% end %>
+</div>

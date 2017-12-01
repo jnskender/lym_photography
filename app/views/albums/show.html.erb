@@ -1,16 +1,30 @@
-<div class=" col-sm-12 col-md-8 col-lg-8 col- mx-auto">
-
   <h1 class="text-center mt-2"><%= @album.title %></h1>
 
-  <% @album.photos.each do |photo| %>
-    <div class="card shadow">
-
-      <%= link_to [@album, photo] do %>
-      <%= image_tag photo.image.url(:display), class:"text-center d-block img-fluid rounded card-img-top" unless photo.image.url == nil %>
+<div class="row">
+  <div class="col-sm-12 col-md-6 mx-auto">
+    <% if !current_user.nil? && current_user.album_id == @album.id%>
+      <div class="text-right btn_group mr-1">
+          <%= link_to '<i class="fa fa-download" aria-hidden="true"></i> Download Album'.html_safe, album_download_url(@album), class: "text-center d-block btn btn-info btn-lg" %>
+      </div>
+      <br>
     <% end %>
+
+  </div>
+</div>
+
+<div class=" col-sm-12 col-md-8 col-lg-8 col- mx-auto">
+
+  <% @album.photos.each do |photo| %>
+    <div class="card shadow-nh">
+
+
+      <%= image_tag photo.image.url(:display), class:"text-center d-block img-fluid rounded card-img-top" unless photo.image.url == nil %>
+
     <div class="card-body">
       <p class="card-text text-left d-inline cursive"><%= photo.title %></p>
       <p class="card-text d-inline cursive ml-1"><%= photo.created_at.strftime('%m/%d/%Y') %></p>
+
+
       <% if !current_user.nil? && current_user.admin?%>
         <div class="dropdown text-right float-right">
           <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -22,6 +36,7 @@
           </div>
         </div>
       <% end %>
+
     </div>
   </div>
   <br>

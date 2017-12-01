@@ -25,6 +25,13 @@
         </div>
       </div>
       <% end %>
+
+      <% if !current_user.nil? && current_user.album_id == album.id%>
+        <div class="text-right btn_group float-right mr-1">
+            <%= link_to '<i class="fa fa-download" aria-hidden="true"></i>'.html_safe, album_download_url(album), class: "text-center d-block btn btn-info btn-sm" %>
+        </div>
+      <% end %>
+
     </div>
   </div>
 

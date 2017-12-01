@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   get 'faq', to: 'static_pages#faq'
 
-  get 'static_pages/pricing'
+  get 'pricing', to: 'static_pages#pricing'
 
   get 'settings', to: 'static_pages#settings'
+  get 'manage_users', to: 'static_pages#manage_users'
 
   resources :posts
-  devise_for :admins
-  devise_for :users
+
+  devise_for :users, :path_prefix => 'd'
+  resources :users
 
   root to: 'albums#index'
 
