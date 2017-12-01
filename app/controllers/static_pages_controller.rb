@@ -8,4 +8,8 @@ class StaticPagesController < ApplicationController
   def settings
   end
 
+  def manage_users
+    @users = User.all
+  end
+
 end
