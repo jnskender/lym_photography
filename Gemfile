@@ -25,6 +25,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'zipline'
 gem 'simple_form'
 gem 'mail_form'
+gem 'md_simple_editor'
+gem 'redcarpet'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

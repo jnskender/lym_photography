@@ -1,2 +1,70 @@
-<h1>StaticPages#settings</h1>
-<p>Find me in app/views/static_pages/settings.html.erb</p>
+<% if current_user.admin? %>
+<div class="row mt-4">
+
+  <div class="col-sm-10 col-md-6 col-lg-3 mx-auto mt-4">
+
+    <div class="card shadow settings-card">
+
+      <%= link_to new_album_path, class: "text-center d-block" do %>
+      <%= image_tag "002-album.png", class:"text-center d-block img-fluid rounded card-img-top mt-4" %>
+    <% end %>
+
+    <div class="card-body">
+      <h2 class="card-text text-center d-inline ">Create New Album</h2>
+
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="col-sm-10 col-md-6 col-lg-3 mx-auto mt-4">
+
+  <div class="card shadow settings-card">
+
+    <%= link_to "#", class: "text-center d-block" do %>
+    <%= image_tag "003-picture.png", class:"text-center d-block img-fluid rounded card-img-top mt-4" %>
+  <% end %>
+
+  <div class="card-body">
+    <h2 class="card-text text-center d-inline ">Create New Album</h2>
+
+  </div>
+</div>
+</div>
+
+<div class="col-sm-10 col-md-6 col-lg-3 mx-auto mt-4">
+
+  <div class="card shadow settings-card">
+
+    <%= link_to new_post_path, class: "text-center d-block" do %>
+    <%= image_tag "001-pen.png", class:"text-center d-block img-fluid rounded card-img-top mt-4" %>
+  <% end %>
+
+  <div class="card-body">
+    <h2 class="card-text text-center d-inline ">Create New Blog Post</h2>
+
+  </div>
+</div>
+</div>
+<% end %>
+<div class="col-sm-10 col-md-6 col-lg-3 mx-auto mt-4">
+
+  <div class="card shadow settings-card">
+
+    <%= link_to edit_user_registration_path(current_user), class: "text-center d-block" do %>
+    <%= image_tag "settings.png", class:"text-center d-block img-fluid rounded card-img-top mt-4" %>
+  <% end %>
+
+  <div class="card-body">
+    <h2 class="card-text text-center d-inline ">Manage User Settings</h2>
+
+  </div>
+</div>
+</div>
+
+
+
+
+
+</div>
