@@ -1,10 +1,22 @@
-  <h1 class="text-center mt-2"><%= @album.title %></h1>
+<h1 class="text-center mb-5"><%= @album.title %></h1>
 
 <div class="row">
   <div class="col-sm-12 col-md-6 mx-auto">
     <% if !current_user.nil? && current_user.album_id == @album.id%>
       <div class="text-right btn_group mr-1">
           <%= link_to '<i class="fa fa-download" aria-hidden="true"></i> Download Album'.html_safe, album_download_url(@album), class: "text-center d-block btn btn-info btn-lg" %>
+      </div>
+      <br>
+    <% end %>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 col-md-6 mx-auto">
+    <% if current_user.admin? %>
+      <div class="text-right btn_group mr-1">
+          <%= link_to '<i class="fa fa-upload" aria-hidden="true"></i> Upload Photo'.html_safe, new_album_photo_path(@album), class: "text-center d-block btn btn-info btn-lg" %>
       </div>
       <br>
     <% end %>
@@ -33,6 +45,7 @@
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <%= link_to 'Download Album', album_download_url(@album), class: "text-center d-block" %>
             <%= link_to 'Upload new photo', new_album_photo_path(@album), class: "text-center d-block" %>
+            <%= link_to 'Edit Album', edit_album_path(@album), class:"text-center d-block" %>
           </div>
         </div>
       <% end %>
@@ -44,32 +57,3 @@
 <!--end photo each-->
 
 </div>
-
-<h1 class="text-center mt-2">Albums</h1>
-
-<% Array(@albums).each do |album| %>
-<div class="card shadow">
-
-  <%= link_to album, class: "text-center d-block" do %>
-  <%= image_tag album.photos.find(album.cover_photo).image.url(:display), class:"text-center d-block img-fluid rounded card-img-top" unless album.cover_photo.nil? %>
-<% end %>
-
-<div class="card-body">
-  <p class="card-text text-left d-inline cursive"><%= album.title %></p>
-  <p class="card-text d-inline cursive ml-1"><%= album.created_at.strftime('%m/%d/%Y') %></p>
-  <% if !current_user.nil? && current_user.admin?%>
-    <div class="dropdown text-right float-right">
-      <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fa fa-wrench" aria-hidden="true"></i>
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <%= link_to 'Edit', edit_album_path(album), class: "text-center d-block" %>
-        <%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' }, class: "text-center d-block" %>
-      </div>
-    </div>
-  <% end %>
-</div>
-</div>
-
-<br>
-<% end %>

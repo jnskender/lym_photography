@@ -18,14 +18,27 @@
  $sans : 100% Source Sans Pro, sans-serif;
 
 body{
-   font-family: "lato", sans-serif;
+   font-family: $sans
 }
  img{
 
  }
 
+ .nav-style{
+   background: -moz-linear-gradient(left, rgba(148,211,224,0.64) 0%, rgba(148,211,224,0.65) 2%, rgba(255,255,255,0.83) 53%, rgba(255,255,255,1) 100%);
+   background: -webkit-linear-gradient(left, rgba(148,211,224,0.64) 0%,rgba(148,211,224,0.65) 2%,rgba(255,255,255,0.83) 53%,rgba(255,255,255,1) 100%);
+   background: linear-gradient(to right, rgba(148,211,224,0.64) 0%,rgba(148,211,224,0.65) 2%,rgba(255,255,255,0.83) 53%,rgba(255,255,255,1) 100%);
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a394d3e0', endColorstr='#ffffff',GradientType=1 );
+   color: white;
+ }
+
  p{
     font-family: $sans;
+ }
+
+ .sans {
+   font-family: $sans;
+   font-size: 24px;
  }
 
  .shadow{
